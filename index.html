@@ -44,34 +44,156 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     }
 
-    h2 {
-      margin-top: 0;
-      border-bottom: 2px solid #eee;
-      padding-bottom: 10px;
-    }
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 15px;
-    }
+const companies = [
+  {
+    name: "Resysta Asia Pte Ltd – Singapore",
+    description: "Architectural technical documentation and material application support.",
+    sections: [
+      {
+        title: "Architectural Drawings & Proposals",
+        content: "Upload or embed drawings and proposal visuals here."
+      },
+      {
+        title: "Installation Guides",
+        content: "Step-by-step installation documentation and guides."
+      },
+      {
+        title: "Technical Specifications",
+        content: "Material specs, detailing standards, and technical sheets."
+      },
+      {
+        title: "Presentations",
+        content: "Client and contractor presentation materials."
+      }
+    ]
+  },
+  {
+    name: "The Plush Pte Ltd – Singapore",
+    description: "Design development and client presentation materials.",
+    sections: [
+      {
+        title: "Design Proposals",
+        content: "Concept drawings and design development work."
+      },
+      {
+        title: "Material Boards",
+        content: "Material selection and mood boards."
+      },
+      {
+        title: "Presentations",
+        content: "Client pitch decks and visual presentations."
+      }
+    ]
+  },
+  {
+    name: "Makati Development Corporation – Philippines",
+    description: "Large-scale construction coordination and site execution.",
+    sections: [
+      {
+        title: "Construction Drawings",
+        content: "Revisions, detailing, and technical drawings."
+      },
+      {
+        title: "Site Documentation",
+        content: "Progress photos, reports, and execution records."
+      },
+      {
+        title: "Coordination Work",
+        content: "Contractor coordination and technical problem-solving."
+      }
+    ]
+  },
+  {
+    name: "M.C. Villalon Architects – Philippines",
+    description: "Architectural design development and documentation.",
+    sections: [
+      {
+        title: "Design Development",
+        content: "Schematic to detailed architectural drawings."
+      },
+      {
+        title: "Permit & Technical Sets",
+        content: "Permit drawings and submission documentation."
+      },
+      {
+        title: "Visualization",
+        content: "3D renders and presentation visuals."
+      }
+    ]
+  }
+];
 
-    .project {
-      border: 1px solid #eee;
-      border-radius: 8px;
-      overflow: hidden;
-      background: #fafafa;
-    }
+export default function PortfolioAccordion() {
+  const [activeIndex, setActiveIndex] = useState(null);
 
-    .project img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
+  const toggle = (index) => {
+    setActiveIndex(activeIndex === index ? null : index);
+  };
 
-    .project-content {
-      padding: 15px;
-    }
+  return (
+    <div className="min-h-screen bg-gray-50 px-6 py-12">
+      <div className="max-w-4xl mx-auto">
+        <h1 className="text-3xl font-bold mb-8 text-center">
+          Professional Experience & Portfolio
+        </h1>
+
+        <div className="space-y-4">
+          {companies.map((company, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-2xl shadow-md border"
+            >
+              <button
+                onClick={() => toggle(index)}
+                className="w-full text-left p-5 flex justify-between items-center"
+              >
+                <div>
+                  <h2 className="text-lg font-semibold">
+                    {company.name}
+                  </h2>
+                  <p className="text-sm text-gray-500">
+                    {company.description}
+                  </p>
+                </div>
+                <span className="text-xl">
+                  {activeIndex === index ? "−" : "+"}
+                </span>
+              </button>
+
+              <AnimatePresence>
+                {activeIndex === index && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    className="overflow-hidden px-5 pb-5"
+                  >
+                    <div className="space-y-4">
+                      {company.sections.map((sec, i) => (
+                        <div key={i} className="border-t pt-3">
+                          <h3 className="font-medium text-gray-800">
+                            {sec.title}
+                          </h3>
+                          <p className="text-sm text-gray-600">
+                            {sec.content}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 
     .btn {
       display: inline-block;
