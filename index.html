@@ -2,54 +2,162 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Your Name | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Name | Architectural Portfolio</title>
+
   <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      background: #f5f5f5;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f7f7f7;
       color: #333;
     }
+
     header {
-      background: #222;
+      background: #1a1a1a;
       color: white;
-      padding: 40px;
       text-align: center;
+      padding: 60px 20px;
     }
-    section {
-      max-width: 900px;
-      margin: 30px auto;
+
+    header h1 {
+      margin: 0;
+      font-size: 36px;
+    }
+
+    header p {
+      margin-top: 10px;
+      color: #ccc;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
       padding: 20px;
-      background: white;
-      border-radius: 8px;
     }
+
+    section {
+      background: white;
+      margin-bottom: 20px;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
     h2 {
+      margin-top: 0;
       border-bottom: 2px solid #eee;
       padding-bottom: 10px;
     }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+    }
+
+    .project {
+      border: 1px solid #eee;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #fafafa;
+    }
+
+    .project img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .project-content {
+      padding: 15px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 15px;
+      background: #1a1a1a;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+
+    .btn:hover {
+      background: #333;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #777;
+      font-size: 14px;
+    }
   </style>
 </head>
+
 <body>
 
 <header>
   <h1>Your Name</h1>
-  <p>Architectural Designer</p>
+  <p>Architectural Designer | Draftsperson</p>
 </header>
 
-<section>
-  <h2>About Me</h2>
-  <p>Write a short professional summary about yourself.</p>
-</section>
+<div class="container">
 
-<section>
-  <h2>Portfolio</h2>
-  <p>Add your projects here (images + description).</p>
-</section>
+  <section>
+    <h2>About Me</h2>
+    <p>
+      Architectural professional with experience in AutoCAD, SketchUp, and Revit.
+      Passionate about delivering functional and visually compelling designs.
+    </p>
 
-<section>
-  <h2>Contact</h2>
-  <p>Email: your@email.com</p>
-</section>
+    <a href="#" class="btn">Download Resume</a>
+  </section>
+
+  <section>
+    <h2>Portfolio</h2>
+
+    <div class="projects">
+
+      <div class="project">
+        <img src="https://via.placeholder.com/400x300" alt="">
+        <div class="project-content">
+          <h3>Project Title 1</h3>
+          <p>Short description of the project.</p>
+        </div>
+      </div>
+
+      <div class="project">
+        <img src="https://via.placeholder.com/400x300" alt="">
+        <div class="project-content">
+          <h3>Project Title 2</h3>
+          <p>Short description of the project.</p>
+        </div>
+      </div>
+
+      <div class="project">
+        <img src="https://via.placeholder.com/400x300" alt="">
+        <div class="project-content">
+          <h3>Project Title 3</h3>
+          <p>Short description of the project.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <p>Email: your@email.com</p>
+    <p>Location: Sunshine Coast, Australia</p>
+  </section>
+
+</div>
+
+<footer>
+  © 2026 Your Name | Portfolio
+</footer>
 
 </body>
 </html>
